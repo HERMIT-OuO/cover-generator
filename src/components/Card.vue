@@ -7,7 +7,7 @@
                 <div class="mt-4">
                     <label class="block font-medium"> Title </label>
                     <input
-                        class="block border border-gray-300 p-2 w-full"
+                        class="block border border-gray-300 p-2 w-full h-10"
                         type="text"
                         placeholder="Enter your title here"
                         v-model="card.title"
@@ -16,7 +16,7 @@
                 <div class="mt-4">
                     <label class="block font-medium"> Author </label>
                     <input
-                        class="block border border-gray-300 p-2 w-full"
+                        class="block border border-gray-300 p-2 w-full h-10"
                         type="text"
                         placeholder="Enter your name here"
                         v-model="card.author"
@@ -26,7 +26,7 @@
                     <div class="mr-2 basis-1/2">
                         <label class="block font-medium"> Font </label>
                         <select
-                            class="block border border-gray-300 p-2 w-full"
+                            class="block border border-gray-300 p-2 w-full h-10"
                             name="font"
                             id="cardFont"
                             v-model="card.font"
@@ -39,7 +39,7 @@
                     <div class="ml-2 basis-1/2">
                         <label class="block font-medium"> Style </label>
                         <select
-                            class="block border border-gray-300 p-2 w-full"
+                            class="block border border-gray-300 p-2 w-full h-10"
                             name="style"
                             id="cardStyle"
                             v-model="card.style"
@@ -55,25 +55,54 @@
                     <div class="mr-2 basis-1/2">
                         <label class="block font-medium"> Color </label>
                         <select
-                            class="block border border-gray-300 p-2 w-full"
+                            class="block border border-gray-300 p-2 w-full h-10"
                             name="style"
                             id="cardStyle"
                             v-model="card.color"
                         >
-                            <option v-for="(item,index) in colors" :key="index" :value="item.hex">{{ item.name }}</option>
+                            <option
+                                v-for="(item, index) in colors"
+                                :key="index"
+                                :value="item.hex"
+                            >
+                                {{ item.name }}
+                            </option>
                         </select>
                     </div>
                     <div class="ml-2 basis-1/2">
                         <label class="block font-medium"> Padding </label>
                         <select
-                            class="block border border-gray-300 p-2 w-full"
+                            class="block border border-gray-300 p-2 w-full h-10"
                             name="style"
                             id="cardStyle"
                             v-model="card.padding"
                         >
-                            <option v-for="(item, index) in paddings" :key="index" :value="item.value">{{ item.name }}</option>
+                            <option
+                                v-for="(item, index) in paddings"
+                                :key="index"
+                                :value="item.value"
+                            >
+                                {{ item.name }}
+                            </option>
                         </select>
                     </div>
+                </div>
+                <div class="mt-4">
+                    <label class="block font-medium"> Icon </label>
+                    <select
+                        class="block border border-gray-300 p-2 w-full h-10"
+                        name="icon"
+                        id="cardIcon"
+                        v-model="card.icon"
+                    >
+                        <option
+                            v-for="(item, index) in colors"
+                            :key="index"
+                            :value="item.hex"
+                        >
+                            {{ item.name }}
+                        </option>
+                    </select>
                 </div>
                 <div class="mt-6">
                     <button
@@ -90,7 +119,6 @@
                         Download
                     </button>
                 </div>
-                <div class="absolute bottom-0 text-sm text-center text-gray-500/80">@Made by HERMITOUO</div>
             </div>
             <div class="basis-1/2">
                 <h2 class="text-2xl font-medium">Preview</h2>
@@ -99,14 +127,15 @@
                         :class="'w-full h-full p-12' + ' ' + card.padding"
                         ref="cardRef"
                         id="realCard"
-                        :style="{backgroundColor: card.color}"
+                        :style="{ backgroundColor: card.color }"
                     >
                         <div
                             class="
                                 real-card-inside
                                 w-full
                                 h-full
-                                flex flex-col justify-center
+                                flex flex-col
+                                justify-center
                                 p-4
                             "
                         >
@@ -146,6 +175,7 @@ interface DataProps {
         font: string;
         style: string;
         padding: string;
+        icon: string;
     };
     classes: {
         basic: {};
@@ -169,7 +199,8 @@ export default {
                 font: "sans",
                 style: "basic",
                 color: "#f3f4f6",
-                padding: ""
+                padding: "",
+                icon: "",
             },
             classes: {
                 basic: {
@@ -184,7 +215,7 @@ export default {
                     title: "outline_title",
                     author: "outline_author",
                 },
-                preview: {}
+                preview: {},
             },
             fonts: {
                 sans: "font-sans",
@@ -194,112 +225,112 @@ export default {
             cardRef: {},
             colors: [
                 {
-                    name: 'None',
-                    hex: 'rgba(0, 0, 0, 0)'
+                    name: "None",
+                    hex: "rgba(0, 0, 0, 0)",
                 },
                 {
-                    name: 'Basic',
-                    hex: '#f3f4f6'
+                    name: "Basic",
+                    hex: "#f3f4f6",
                 },
                 {
-                    name: 'Momo',
-                    hex: '#f596aa'
+                    name: "Momo",
+                    hex: "#f596aa",
                 },
                 {
-                    name: 'Kuwazome',
-                    hex: '#64363c'
+                    name: "Kuwazome",
+                    hex: "#64363c",
                 },
                 {
-                    name: 'Kuchiba',
-                    hex: '#e2943b'
+                    name: "Kuchiba",
+                    hex: "#e2943b",
                 },
                 {
-                    name: 'Uguisu',
-                    hex: '#6c6a2d'
+                    name: "Uguisu",
+                    hex: "#6c6a2d",
                 },
                 {
-                    name: 'Baikocha',
-                    hex: '#89916b'
-                }
+                    name: "Baikocha",
+                    hex: "#89916b",
+                },
             ],
             paddings: [
                 {
-                    name: 'None',
-                    value: '',
+                    name: "None",
+                    value: "",
                 },
                 {
-                    name: 'Graph Paper',
-                    value: 'graph-paper',
+                    name: "Graph Paper",
+                    value: "graph-paper",
                 },
                 {
-                    name: 'Jig Saw',
-                    value: 'jigSaw',
+                    name: "Jig Saw",
+                    value: "jigSaw",
                 },
                 {
-                    name: 'Hideout',
-                    value: 'hideout',
+                    name: "Hideout",
+                    value: "hideout",
                 },
                 {
-                    name: 'Dots',
-                    value: 'dots',
+                    name: "Dots",
+                    value: "dots",
                 },
                 {
-                    name: 'Falling Triangles',
-                    value: 'falling-triangles',
+                    name: "Falling Triangles",
+                    value: "falling-triangles",
                 },
                 {
-                    name: 'Circuit Board',
-                    value: 'circuit-board',
+                    name: "Circuit Board",
+                    value: "circuit-board",
                 },
                 {
-                    name: 'Temple',
-                    value: 'temple',
+                    name: "Temple",
+                    value: "temple",
                 },
                 {
-                    name: 'Anchors',
-                    value: 'anchors',
+                    name: "Anchors",
+                    value: "anchors",
                 },
                 {
-                    name: 'Brickwall',
-                    value: 'brickwall',
+                    name: "Brickwall",
+                    value: "brickwall",
                 },
                 {
-                    name: 'Overlapping Circles',
-                    value: 'overlapping-circles',
+                    name: "Overlapping Circles",
+                    value: "overlapping-circles",
                 },
                 {
-                    name: 'Wiggle',
-                    value: 'wiggle',
+                    name: "Wiggle",
+                    value: "wiggle",
                 },
                 {
-                    name: 'Tic Tac Toe',
-                    value: 'tic-tac-toe',
+                    name: "Tic Tac Toe",
+                    value: "tic-tac-toe",
                 },
                 {
-                    name: 'Leaf',
-                    value: 'leaf',
+                    name: "Leaf",
+                    value: "leaf",
                 },
                 {
-                    name: 'Bubbles',
-                    value: 'bubbles',
+                    name: "Bubbles",
+                    value: "bubbles",
                 },
                 {
-                    name: 'Squares',
-                    value: 'squares',
+                    name: "Squares",
+                    value: "squares",
                 },
                 {
-                    name: 'Explorer',
-                    value: 'explorer',
+                    name: "Explorer",
+                    value: "explorer",
                 },
                 {
-                    name: 'Jupiter',
-                    value: 'jupiter',
+                    name: "Jupiter",
+                    value: "jupiter",
                 },
                 {
-                    name: 'Sun',
-                    value: 'sun',
+                    name: "Sun",
+                    value: "sun",
                 },
-            ]
+            ],
         });
         onBeforeMount(() => {});
         onMounted(() => {});
@@ -309,6 +340,8 @@ export default {
             html2canvas(data.cardRef, {
                 scale: 4,
                 useCORS: true,
+                width: data.cardRef.clientWidth,
+                height: data.cardRef.clientHeight,
             }).then(function (canvas) {
                 let imgUrl = canvas.toDataURL("image/png");
                 let tmpLink = document.createElement(
@@ -318,8 +351,8 @@ export default {
                 tmpLink.href = imgUrl;
                 tmpLink.download = "card.png";
                 tmpLink.click();
-                document.body.appendChild(tmpLink);
-                document.body.removeChild(tmpLink);
+                // document.body.appendChild(tmpLink);
+                // document.body.removeChild(tmpLink);
             });
         };
 

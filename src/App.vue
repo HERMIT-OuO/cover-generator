@@ -1,7 +1,11 @@
 <template>
-    <div class="app container mx-auto flex flex-col items-center mt-20">
+    <div class="app container mx-auto flex flex-col items-center mt-8vh">
         <h1 class="text-4xl font-bold antialiased">Make your cover here.</h1>
         <Card class="mt-8" />
+        <div class="mt-8 text-sm text-gray-500/80">
+            @Made by
+            <a href="https://hermit.world" target="_blank">HERMITOUO</a>
+        </div>
     </div>
 </template>
 
